@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Play Video</title>
+<meta charset="UTF-8">
+<title>Autoplay Video</title>
 
-    <style>
-        body {
-            margin: 0;
-            background: black;
-            overflow: hidden;
-        }
-
-        video {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-        }
-    </style>
+<style>
+    body {
+        margin: 0;
+        background: black;
+    }
+    video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+</style>
 </head>
 
-<body>
+<body onclick="enableSound()">
 
-<video autoplay muted loop playsinline>
+<video id="myVideo" autoplay muted loop playsinline>
     <source src="video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
 </video>
+
+<script>
+function enableSound() {
+    const video = document.getElementById("myVideo");
+    video.muted = false;
+    video.play();
+}
+</script>
 
 </body>
 </html>
