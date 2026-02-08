@@ -16,16 +16,27 @@ html, body {
 video {
     width: 100vw;
     height: 100vh;
-    object-fit: contain; /* PERFECT FIT */
+    object-fit: contain;
 }
 </style>
 </head>
 
 <body>
 
-<video autoplay muted loop playsinline>
+<video id="bgVideo" autoplay muted loop playsinline>
     <source src="videoo.mp4" type="video/mp4">
 </video>
+
+<audio id="bgAudio" loop>
+    <source src="audioo.mp3" type="audio/mp3">
+</audio>
+
+<script>
+document.addEventListener("click", () => {
+    const audio = document.getElementById("bgAudio");
+    audio.play();
+});
+</script>
 
 </body>
 </html>
