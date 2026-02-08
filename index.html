@@ -13,14 +13,12 @@ html, body {
     background: black;
 }
 
-/* Video */
 video {
     width: 100vw;
     height: 100vh;
     object-fit: contain;
 }
 
-/* Sound Button */
 #soundToggle {
     position: fixed;
     top: 20px;
@@ -34,7 +32,6 @@ video {
     height: 55px;
     font-size: 22px;
     cursor: pointer;
-    backdrop-filter: blur(6px);
 }
 </style>
 </head>
@@ -45,27 +42,28 @@ video {
     <source src="video.mp4" type="video/mp4">
 </video>
 
-<audio id="bgAudio" loop>
+<audio id="bgAudio" loop muted>
     <source src="audio.mp3" type="audio/mp3">
 </audio>
 
-<button id="soundToggle">🔊</button>
+<button id="soundToggle">🔇</button>
 
 <script>
 const audio = document.getElementById("bgAudio");
 const btn = document.getElementById("soundToggle");
 
-let isPlaying = false;
-
-btn.addEventListener("click", () => {
-    if (!isPlaying) {
-        audio.play();
-        btn.textContent = "🔈";
-        isPlaying = true;
-    } else {
-        audio.pause();
-        btn.textContent = "🔇";
-        isPlaying = false;
+btn.addEventListener("click", async () => {
+    try {
+        if (audio.paused) {
+            audio.muted = false;
+            await audio.play();
+            btn.textContent = "🔊";
+        } else {
+            audio.pause();
+            btn.textContent = "🔇";
+        }
+    } catch (e) {
+        console.log("Audio play blocked:", e);
     }
 });
 </script>
