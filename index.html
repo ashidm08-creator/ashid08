@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Autoplay Video</title>
+<title>Video with Audio</title>
 
 <style>
     body {
@@ -17,18 +17,19 @@
 </style>
 </head>
 
-<body onclick="enableSound()">
+<body>
 
-<video id="myVideo" autoplay muted loop playsinline>
+<video id="vid" autoplay muted loop playsinline>
     <source src="video.mp4" type="video/mp4">
 </video>
 
 <script>
-function enableSound() {
-    const video = document.getElementById("myVideo");
-    video.muted = false;
-    video.play();
-}
+document.addEventListener("click", () => {
+    const v = document.getElementById("vid");
+    v.muted = false;
+    v.volume = 1.0;
+    v.play();
+}, { once: true });
 </script>
 
 </body>
