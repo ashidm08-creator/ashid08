@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,10 +13,28 @@ html, body {
     background: black;
 }
 
+/* Video */
 video {
     width: 100vw;
     height: 100vh;
     object-fit: contain;
+}
+
+/* Sound Button */
+#soundToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
 }
 </style>
 </head>
@@ -24,17 +42,31 @@ video {
 <body>
 
 <video autoplay muted loop playsinline>
-    <source src="videoo.mp4" type="video/mp4">
+    <source src="video.mp4" type="video/mp4">
 </video>
 
-<audio id="bgAudio" autoplay loop muted>
-    <source src="audioo.mp3" type="audio/mp3">
+<audio id="bgAudio" loop>
+    <source src="audio.mp3" type="audio/mp3">
 </audio>
 
+<button id="soundToggle">🔊</button>
+
 <script>
-window.addEventListener("load", () => {
-    const audio = document.getElementById("bgAudio");
-    audio.muted = false;
+const audio = document.getElementById("bgAudio");
+const btn = document.getElementById("soundToggle");
+
+let isPlaying = false;
+
+btn.addEventListener("click", () => {
+    if (!isPlaying) {
+        audio.play();
+        btn.textContent = "🔈";
+        isPlaying = true;
+    } else {
+        audio.pause();
+        btn.textContent = "🔇";
+        isPlaying = false;
+    }
 });
 </script>
 
