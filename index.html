@@ -2,36 +2,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Video with Audio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Video</title>
 
 <style>
-    body {
-        margin: 0;
-        background: black;
-    }
-    video {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-    }
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: black;
+}
+
+video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain; /* PERFECT FIT */
+}
 </style>
 </head>
 
 <body>
 
-<video id="vid" autoplay muted loop playsinline>
+<video autoplay muted loop playsinline>
     <source src="videoo.mp4" type="video/mp4">
 </video>
 
-<script>
-document.addEventListener("click", () => {
-    const v = document.getElementById("vid");
-    v.muted = false;
-    v.volume = 1.0;
-    v.play();
-}, { once: true });
-</script>
-
 </body>
 </html>
-
